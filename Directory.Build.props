@@ -1,0 +1,37 @@
+<Project>
+
+  <!--
+    全仓库统一编译配置。
+    规则：能把"代码质量要求"固化成配置的，就不要靠人工 review 和自觉。
+
+    注意：这里只放"所有项目都适用"的项。
+    以后加 WinForm 项目时，它需要 net10.0-windows 和 UseWindowsForms，
+    那些属于项目自身特性，应写在各自的 csproj 里，不要往这里堆。
+  -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+      不整体开 TreatWarningsAsErrors：新手期满屏红会直接劝退休学习，
+      但把 nullable 单独升级为错误，强制养成可空性判断的习惯。
+      这是性价比最高的一个设置——它拦住的是运行时 NullReferenceException。
+    -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(CI)' == 'true'">
+    <!--
+      本地宽松、CI 严格。
+      GitHub Actions 会自动设置 CI=true，所以这个分支在流水线里自动生效，
+      本地开发时不受影响。等 W6 配好 Actions 后，这一行才真正开始工作。
+    -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+</Project>
