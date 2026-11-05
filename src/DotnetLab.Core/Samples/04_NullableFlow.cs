@@ -1,3 +1,4 @@
+namespace DotnetLab.Core.Samples;
 public static class NullableFlow
 {
     public static void Run(string? input)
@@ -5,6 +6,11 @@ public static class NullableFlow
         System.Console.WriteLine("-----------NullableFlow--------------");
         //string name=null; //将 null 文本或可能的 null 值转换为不可为 null 类型。
         string? name=null; // 不报错、
+
+        if(name!=null)
+        {
+            
+        }
         
 
         System.Console.WriteLine($"input=={input}");

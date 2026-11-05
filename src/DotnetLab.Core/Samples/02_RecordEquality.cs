@@ -1,3 +1,4 @@
+namespace DotnetLab.Core.Samples;
 // 1. 引用记录
 public record RefRecord(string number,string name);
 

@@ -1,3 +1,4 @@
+namespace DotnetLab.Core.Samples;
 public record ReportTemplate
 {
     public string Id{get;init;}="P002";
